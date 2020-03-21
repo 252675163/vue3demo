@@ -5,6 +5,10 @@
         "strict": true,
         "sourceMap": true,
         "moduleResolution": "node",
+        "baseUrl": "./",
+        "paths": {
+            "antdv/*": ["../../work/ant-design-vue/"]
+          },
         "lib": [
             "esnext",
             "dom",

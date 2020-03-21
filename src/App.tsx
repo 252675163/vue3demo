@@ -1,5 +1,6 @@
-import { defineComponent, reactive, render } from "vue";
+import { defineComponent, reactive, render ,ElementClass} from "vue";
 import Child from "./Child";
+// import {Spin} from "antdv/index";
 // import App2 from "./App2.vue";
 interface InputProps {
     dd: { a: string };
@@ -7,7 +8,7 @@ interface InputProps {
 }
 export default defineComponent({
     components: { Child },
-    setup() {
+    setup(props: { a: string, b: string }) {
         const dd = reactive({ a: 1 })
         // function render() {
         //     return (<div> {dd.value.a}</div >)
@@ -15,13 +16,14 @@ export default defineComponent({
         function myclick() {
             dd.a++
         }
-        return { dd, myclick }
+        return { dd, myclick, ...props }
     },
     render() {
+        console.log(this.$props)
         return (
             <div>
                 <Child propA={this.dd.a} />
-                {/* <App2 /> */}
+                new:{this.$props.a}
                 <div onClick={this.myclick}> {this.dd.a}</div >
             </div>)
     }

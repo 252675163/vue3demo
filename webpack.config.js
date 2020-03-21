@@ -6,7 +6,11 @@ module.exports = {
     mode: "development",
     devtool: '#source-map',
     resolve: {
-        extensions: ['.tsx', '.ts', '.js', 'vue']
+        extensions: ['.tsx', '.ts', '.js', 'vue'],
+        alias: {
+            vue$: 'vue/dist/vue.esm.js',
+            // antdv:path.resolve(__filename,'../../work/ant-design-vue/')
+        },
     },
     module: {
         rules: [
@@ -28,9 +32,16 @@ module.exports = {
                             transpileOnly: true
                         }
                     }]
+            },
+            {
+                test: /\.js$|\.jsx$/,
+                exclude: /node_modules/,
+                use: [
+                    'babel-loader']
             }
         ]
     },
+
     plugins: [
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({

@@ -1,5 +1,5 @@
 import { ref, watchEffect, createApp, h } from "vue";
-import App from "./App";
+import {Button} from "../../../work/ant-design-vue";
 const dd = ref(1)
 watchEffect(() => {
     console.log(dd.value)
@@ -14,21 +14,20 @@ const app = createApp({
         }
         return { a }
     },
-    template: `
-    <div>
-    <span>aaa</span>
-      <span class="classA" :class="{classB:true}" id="idA" msg="hi" key="keyA" ref="refA" v-show="a" v-asd='asc'
-      @click="fnA" @click.native="fnB"
-      >text</span>
-    </div>
-    `,
-    // render() {
-    //     let a = {
-    //         b: 'b',
-    //         c: 'c'
-    //     }
-    //     return (<App {...a}></App>)
-    // }
+    // template: `
+    // <div>
+    //   <span class="classA" :class="{classB:true}" id="idA" msg="hi" key="keyA" ref="refA" v-slot:slotA="slotProp"
+    //   @click="fnA" @click.native="fnB"
+    //   >text</span>
+    // </div>
+    // `,
+    render() {
+        let a = {
+            b: 'b',
+            c: 'c'
+        }
+        return (<Button></Button>)
+    }
 })
 app.mount("#app")
 window.a = app
