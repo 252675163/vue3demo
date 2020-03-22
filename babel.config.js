@@ -1,4 +1,4 @@
-const transformJsx = require('../../mycode/babel-plugin-transform-vue-jsx/index')
+const transformJsx = require('./build/transform-jsx-vue3/index')
 module.exports = {
     "presets": [
         [

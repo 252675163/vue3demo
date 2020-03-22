@@ -2,13 +2,14 @@ const VueLoaderPlugin = require('vue-loader/dist/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 module.exports = {
-    entry: './src/index.tsx',
+    entry: './src/index.jsx',
     mode: "development",
     devtool: '#source-map',
     resolve: {
         extensions: ['.tsx', '.ts', '.js', 'vue'],
         alias: {
             vue$: 'vue/dist/vue.esm.js',
+            'JSXUTIL': path.join(process.cwd(),'../transform-jsx-vue3/mergeJSXProps.js'),
             // antdv:path.resolve(__filename,'../../work/ant-design-vue/')
         },
     },

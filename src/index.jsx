@@ -1,12 +1,7 @@
-import { ref, watchEffect, createApp, h } from "vue";
-import {Button} from "../../../work/ant-design-vue";
-const dd = ref(1)
-watchEffect(() => {
-    console.log(dd.value)
-})
-
+import { createApp } from "vue";
+import Button from "../../../ant-design-vue/es/button/button";
 const app = createApp({
-    components: { App },
+    components:{aButton:Button},
     setup() {
         let a = {
             b: 'b',
@@ -21,12 +16,14 @@ const app = createApp({
     //   >text</span>
     // </div>
     // `,
+    // template:
+    // `<aButton>asd</aButton>`,
     render() {
         let a = {
             b: 'b',
             c: 'c'
         }
-        return (<Button></Button>)
+        return (<Button type="dashed">asd</Button>)
     }
 })
 app.mount("#app")
@@ -39,4 +36,4 @@ window.a = app
 //         return (<App></App>)
 //     }
 // }).mount('#app')
-h('div', { class: [] })
+// h('div', { class: [] })
