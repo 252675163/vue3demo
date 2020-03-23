@@ -1,13 +1,35 @@
-import { createApp } from "vue";
-import Button from "../../../ant-design-vue/es/button/button";
+import { createApp,reactive,ref } from "vue";
+import '../../dist/antd.css';
+import Button from "../../../ant-design-vue/es/button";
+import Base from "../../../ant-design-vue/es/base";
 const app = createApp({
-    components:{aButton:Button},
     setup() {
-        let a = {
-            b: 'b',
-            c: 'c'
+        let obj = reactive({num:0})
+        let num = ref(0);
+        function clickMe(){
+            obj.num++;
+            num.value++;
         }
-        return { a }
+        return function render() {
+            return (
+            <div>
+                <div>
+                    <h2 >{obj.num}</h2>
+                    <h2 >{num.value}</h2>
+                    <Button type="dashed" onClick={clickMe}>clickMe</Button>
+                </div>
+                <hr></hr>
+                <Button type="primary" shape="circle" icon="search"></Button>
+                <Button type="primary" shape="circle">A</Button>
+                <Button type="primary" icon="search">Search</Button>
+                <Button shape="circle" icon="search" />
+                <Button icon="search">Search</Button>
+                <Button shape="circle" icon="search" />
+                <Button icon="search">Search</Button>
+                <Button type="dashed" shape="circle" icon="search" />
+                <Button type="dashed" icon="search">Search</Button>
+            </div>)
+        }
     },
     // template: `
     // <div>
@@ -16,24 +38,7 @@ const app = createApp({
     //   >text</span>
     // </div>
     // `,
-    // template:
-    // `<aButton>asd</aButton>`,
-    render() {
-        let a = {
-            b: 'b',
-            c: 'c'
-        }
-        return (<Button type="dashed">asd</Button>)
-    }
+    
 })
+app.use(Base);
 app.mount("#app")
-window.a = app
-// import { createApp, render } from "vue";
-// import App from "./App2.vue";
-// createApp({
-//     components: { App },
-//     render() {
-//         return (<App></App>)
-//     }
-// }).mount('#app')
-// h('div', { class: [] })

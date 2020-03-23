@@ -57,7 +57,7 @@ module.exports = function ({ types: t }) {
                         const vueSource = path.node.body
                             .filter(p => p.type === 'ImportDeclaration')
                             .find(p => p.source.value == 'vue')
-                        const key = vueSource.specifiers.map(s => s.imported.name)
+                        const key = vueSource.specifiers.map(s => s.imported&&s.imported.name)
                         if (key.includes('h')) {
                         } else {
                             vueSource.specifiers.unshift(t.ImportSpecifier(t.identifier('h'), t.identifier('h')))
